@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_design_code/certificates/card.dart';
+import 'package:flutter_design_code/certificates/certificate.dart';
+import 'dart:math';
 
 class ContentView extends StatelessWidget {
   @override
@@ -23,83 +26,48 @@ class ContentPage extends StatefulWidget {
 }
 
 class _ContentPageState extends State<ContentPage> {
+  double degree(int angle) {
+    return angle * pi / 360;
+  }
+
   @override
   Widget build(BuildContext context) {
+    var _show  = false;
+    var _color1 = new Color(0xffff0000);
+    var _color2 = new Color(0xffffff00);
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+      body: Container(
+        child: Stack(
+          alignment: AlignmentDirectional.center, //分析 2
           children: <Widget>[
-            Container(
-              width: 340,
-              height: 220,
-              decoration: new BoxDecoration(
-                  color: const Color(0xff000000),
-                  borderRadius:
-                      new BorderRadius.all(const Radius.circular(10.0))),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Container(
-                    padding: EdgeInsets.only(top: 18, left: 10, right: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text('UI Design',
-                                textAlign: TextAlign.start,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .title
-                                    .copyWith(
-                                        fontWeight: FontWeight.bold,
-                                        color: Color.fromARGB(
-                                            0xFF, 0x5E, 0xCD, 0xFA))),
-                            Padding(
-                              padding: EdgeInsets.only(top: 6),
-                              child: Text(
-                                'Certificate',
-                                style: TextStyle(
-                                  color: const Color(0xffffffff),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            Padding(
-                              padding: EdgeInsets.only(top: 6),
-                              child: new Image.asset(
-                                "assets/Logo.png",
-                                width: 30,
-                                height: 30,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    alignment: Alignment.bottomLeft,
-                    child: Column(
-                      children: <Widget>[
-                        new Image.asset(
-                          "assets/Background.png",
-                          fit: BoxFit.fitHeight,
-                          alignment: Alignment.bottomCenter,
-                        )
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            )
+            Transform.rotate(
+              angle: degree(23),
+              child: Transform.scale(
+                  scale: 0.85,
+                  child: CardView(
+                    color: _color1,
+                    offset: Offset(0, 700),
+                  )),
+            ),
+            Transform.rotate(
+              angle: degree(18),
+              child: Transform.scale(
+                  scale: 0.9,
+                  child: CardView(
+                      color: _color2,
+                      offset: Offset(0, 340))),
+            ),
+            Transform.rotate(
+                angle: degree(5),
+                origin: Offset(0, 0),
+                
+                child: GestureDetector(onTap: () {
+                  setState(() {
+                    _show = !_show;
+                    _color1 = _show ? new Color(0xffffffff) : new Color(0xffff0000);
+                    _color2 = _show ? new Color(0xff00ff00) : new Color(0xffffff00);
+                  });
+                },child: CertificateView(item: "111")),),
           ],
         ),
       ),
