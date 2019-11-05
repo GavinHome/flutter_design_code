@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'home/course.dart';
-
+import 'package:flutter_design_code/notifications/notification.dart';
+//import 'home/course.dart';
 //import 'myapp.dart';
 
 void main() => runApp(App());
@@ -15,7 +15,8 @@ class App extends StatelessWidget {
       ),
       //home: ContentView(),
       home: Scaffold(
-        body: CoursesView(),
+        //body: CoursesView(),
+        body: NotificationPage(),
       )
     );
   }

@@ -107,11 +107,22 @@ class CoursesView extends StatelessWidget {
               ],
             ),
           ),
-          Expanded(
-            
-            child: ListView(
-                scrollDirection: Axis.horizontal, children: getCourses()),
-          ),
+          Container(
+              height: 450,
+              child: MediaQuery.removePadding(
+                context: context,
+                removeTop: true,
+                child: ListView(
+                  padding: EdgeInsets.zero,
+                  scrollDirection: Axis.horizontal,
+                  children: getCourses(),
+                ),
+              ))
+          // Expanded(
+          //   child: ListView(
+          //     padding: EdgeInsets.all(0),
+          //       scrollDirection: Axis.horizontal, children: getCourses()),
+          // ),
         ],
       ),
     );
