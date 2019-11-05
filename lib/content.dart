@@ -3,27 +3,14 @@ import 'package:flutter_design_code/certificates/card.dart';
 import 'package:flutter_design_code/certificates/certificate.dart';
 import 'dart:math';
 
-class ContentView extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'DesignCode',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: ContentPage(),
-    );
-  }
-}
-
-class ContentPage extends StatefulWidget {
-  ContentPage({Key key}) : super(key: key);
+class ContentView extends StatefulWidget {
+  ContentView({Key key}) : super(key: key);
 
   @override
-  _ContentPageState createState() => _ContentPageState();
+  _ContentViewState createState() => _ContentViewState();
 }
 
-class _ContentPageState extends State<ContentPage> {
+class _ContentViewState extends State<ContentView> {
   var _show = false;
   double degree(int angle) {
     return angle * pi / 180;
@@ -45,9 +32,9 @@ class _ContentPageState extends State<ContentPage> {
                       scale: 0.8,
                       child: CardView(
                         color: _show
-                            ? new Color(0xffffffff)
-                            : new Color(0xffff0000),
-                        offset: _show ? Offset(0, 120) : Offset(0, 0),
+                            ? new Color(0xffe64ad9)
+                            : new Color(0xff803cc9),
+                        offset: _show ? Offset(0, 120) : Offset(0, 120),
                       )),
                 ),
                 Transform.rotate(
@@ -56,9 +43,9 @@ class _ContentPageState extends State<ContentPage> {
                       scale: 0.9,
                       child: CardView(
                           color: _show
-                              ? new Color(0xff00ff00)
-                              : new Color(0xffffff00),
-                          offset: _show ? Offset(0, 55) : Offset(0, 0))),
+                              ? new Color(0xff674eec)
+                              : new Color(0xff453cc9),
+                          offset: _show ? Offset(0, 55) : Offset(0, 55))),
                 ),
                 Transform.rotate(
                   angle: _show ? degree(5) : degree(0),

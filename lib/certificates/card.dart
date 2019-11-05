@@ -14,7 +14,7 @@ class CardView extends StatelessWidget {
       height: 220,
       decoration: new BoxDecoration(
           color: color,
-          backgroundBlendMode: BlendMode.hardLight,
+          //backgroundBlendMode: BlendMode.softLight,
           borderRadius: new BorderRadius.all(const Radius.circular(10.0)),
           boxShadow: <BoxShadow>[
             new BoxShadow(
@@ -77,7 +77,7 @@ class TitleView extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 new Image.asset(
-                  "assets/Illustration5-1.png",
+                  "assets/Illustration5.png",
                   fit: BoxFit.cover,
                 )
               ],
