@@ -11,63 +11,71 @@ class ContentView extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ContentPage(title: 'DesignCode'),
+      home: ContentPage(),
     );
   }
 }
 
 class ContentPage extends StatefulWidget {
-  ContentPage({Key key, this.title}) : super(key: key);
-
-  final String title;
+  ContentPage({Key key}) : super(key: key);
 
   @override
   _ContentPageState createState() => _ContentPageState();
 }
 
 class _ContentPageState extends State<ContentPage> {
+  var _show = false;
   double degree(int angle) {
-    return angle * pi / 360;
+    return angle * pi / 180;
   }
 
   @override
   Widget build(BuildContext context) {
-    var _show  = false;
-    var _color1 = new Color(0xffff0000);
-    var _color2 = new Color(0xffffff00);
     return Scaffold(
       body: Container(
-        child: Stack(
-          alignment: AlignmentDirectional.center, //分析 2
+        child: Column(
           children: <Widget>[
-            Transform.rotate(
-              angle: degree(23),
-              child: Transform.scale(
-                  scale: 0.85,
-                  child: CardView(
-                    color: _color1,
-                    offset: Offset(0, 700),
-                  )),
+            TitleView(),
+            Stack(
+              alignment: AlignmentDirectional.center,
+              children: <Widget>[
+                Transform.rotate(
+                  angle: _show ? degree(15) : degree(0), //23
+                  child: Transform.scale(
+                      scale: 0.8,
+                      child: CardView(
+                        color: _show
+                            ? new Color(0xffffffff)
+                            : new Color(0xffff0000),
+                        offset: _show ? Offset(0, 120) : Offset(0, 0),
+                      )),
+                ),
+                Transform.rotate(
+                  angle: _show ? degree(10) : degree(0), //18
+                  child: Transform.scale(
+                      scale: 0.9,
+                      child: CardView(
+                          color: _show
+                              ? new Color(0xff00ff00)
+                              : new Color(0xffffff00),
+                          offset: _show ? Offset(0, 55) : Offset(0, 0))),
+                ),
+                Transform.rotate(
+                  angle: _show ? degree(5) : degree(0),
+                  origin: Offset(0, 0),
+                  child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _show = !_show;
+                        });
+                      },
+                      child: CertificateView(item: "")),
+                ),
+              ],
             ),
-            Transform.rotate(
-              angle: degree(18),
-              child: Transform.scale(
-                  scale: 0.9,
-                  child: CardView(
-                      color: _color2,
-                      offset: Offset(0, 340))),
+            Expanded(
+              child: CardBottomView(),
             ),
-            Transform.rotate(
-                angle: degree(5),
-                origin: Offset(0, 0),
-                
-                child: GestureDetector(onTap: () {
-                  setState(() {
-                    _show = !_show;
-                    _color1 = _show ? new Color(0xffffffff) : new Color(0xffff0000);
-                    _color2 = _show ? new Color(0xff00ff00) : new Color(0xffffff00);
-                  });
-                },child: CertificateView(item: "111")),),
           ],
         ),
       ),
