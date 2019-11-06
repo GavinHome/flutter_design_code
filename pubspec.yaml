@@ -44,8 +44,14 @@ flutter:
   assets:
     - assets/Background.png
     - assets/Logo.png
+    - assets/Certificate1.png
+    - assets/Certificate2.png
+    - assets/Certificate3.png
+    - assets/Certificate4.png
     - assets/Illustration1.png
     - assets/Illustration2.png
+    - assets/Illustration3.png
+    - assets/Illustration4.png
     - assets/Illustration5.png
 
   # An image asset can refer to one or more resolution-specific "variants", see

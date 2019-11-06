@@ -57,15 +57,60 @@ class NotificationsListItem extends StatelessWidget {
   final NotificationModel _notification;
 
   NotificationsListItem(this._notification);
-
+  
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading:
-          CircleAvatar(backgroundImage: new AssetImage(_notification.image)),
-      title: Text(_notification.title),
-      subtitle: Text(_notification.text),
-      trailing: Text(_notification.date),
+      //leading: CircleAvatar(backgroundImage: new AssetImage(_notification.image)),
+      leading: AspectRatio(
+        aspectRatio: 1,
+        child: Container(
+            width: 80,
+            height: 80,
+            decoration: BoxDecoration(
+              color: const Color(0xffe6eaf3),
+              //borderRadius: BorderRadius.circular(20)
+            ),
+            child: new Image.asset(
+              _notification.image,
+              fit: BoxFit.fill,
+            )),
+      ),
+      title: Text(_notification.title,
+          style: Theme.of(context)
+              .textTheme
+              .title
+              .copyWith(fontWeight: FontWeight.bold)),
+      subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            _notification.text,
+            strutStyle: StrutStyle(leading: 0.5),
+            style: Theme.of(context).textTheme.subtitle.copyWith(),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
+          Text(
+            _notification.date,
+            strutStyle: StrutStyle(leading: 0.5),
+            style: Theme.of(context)
+                .textTheme
+                .caption
+                .copyWith(color: Colors.grey, fontWeight: FontWeight.bold),
+          )
+        ],
+      ),
+      trailing: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Icon(
+            Icons.keyboard_arrow_right,
+            color: const Color(0xffcccccc),
+          )
+        ],
+      ),
     );
   }
 }
@@ -78,6 +123,7 @@ class NotificationList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
+      shrinkWrap: true,
       padding: EdgeInsets.symmetric(vertical: 8.0),
       children: _buildContactsList(),
     );
@@ -102,6 +148,22 @@ class NotificationPage extends StatelessWidget {
           // Here we take the value from the MyHomePage object that was created by
           // the App.build method, and use it to set our appbar title.
           title: Text("Notifications"),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.add),
+              tooltip: "Add update",
+              onPressed: () {
+                print("Alarm");
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.settings),
+              tooltip: "Settings",
+              onPressed: () {
+                print("Alarm");
+              },
+            ),
+          ],
         ),
         body: Container(
           child: NotificationList(_buildNotificationList()),
@@ -121,37 +183,42 @@ class NotificationModel {
 List<NotificationModel> notifications = [
   NotificationModel(
       "assets/Illustration1.png",
-      "swiftui",
-      "大家忽视覅偶尔回复而韩国is的hi多少个is多个收到货IGis个his读后感is多个hi韩国ID深V出魔抗VBUI欧盟是的归属感就是 属地化工is多个hi是个 是个hi第三帝国会死哦低功耗is电话公司工会",
+      "Swiftui",
+      "了解如何使用高级合成、布局、图形和动画在SwiftUI中构建自定义视图和控件看一个高性能的演示，可动画控制和观看它在代码中一步一步深入了解迅捷的布局体系",
       "JUN 26"),
   NotificationModel(
       "assets/Illustration2.png",
+      "Framer X",
+      "了解如何使用高级合成、布局、图形和动画在Framer X中构建自定义视图和控件看一个高性能的演示，可动画控制和观看它在代码中一步一步深入了解迅捷的布局体系",
+      "JUN 26"),
+  NotificationModel(
+      "assets/Illustration3.png",
+      "CSS Layout",
+      "了解如何使用高级合成、布局、图形和动画在CSS中构建自定义视图和控件看一个高性能的演示，可动画控制和观看它在代码中一步一步深入了解迅捷的布局体系",
+      "JUN 26"),
+  NotificationModel(
+      "assets/Illustration4.png",
+      "React Native Part2",
+      "了解如何使用高级合成、布局、图形和动画在React中构建自定义视图和控件看一个高性能的演示，可动画控制和观看它在代码中一步一步深入了解迅捷的布局体系",
+      "JUN 26"),
+  NotificationModel(
+      "assets/Certificate1.png",
+      "Unity",
+      "了解如何使用高级合成、布局、图形和动画在Unity中构建自定义视图和控件看一个高性能的演示，可动画控制和观看它在代码中一步一步深入了解迅捷的布局体系",
+      "JUN 26"),
+  NotificationModel(
+      "assets/Certificate2.png",
+      "React Native for Designer",
+      "了解如何使用高级合成、布局、图形和动画在React中构建自定义视图和控件看一个高性能的演示，可动画控制和观看它在代码中一步一步深入了解迅捷的布局体系",
+      "JUN 26"),
+  NotificationModel(
+      "assets/Certificate3.png",
+      "Vue",
+      "了解如何使用高级合成、布局、图形和动画在Vue中构建自定义视图和控件看一个高性能的演示，可动画控制和观看它在代码中一步一步深入了解迅捷的布局体系",
+      "JUN 26"),
+  NotificationModel(
+      "assets/Certificate4.png",
       "swiftui",
       "大家忽视覅偶尔回复而韩国is的hi多少个is多个收到货IGis个his读后感is多个hi韩国ID深V出魔抗VBUI欧盟是的归属感就是 属地化工is多个hi是个 是个hi第三帝国会死哦低功耗is电话公司工会",
       "JUN 26"),
-  // Notification(
-  //     "assets/Illustration3.png",
-  //     "swiftui",
-  //     "大家忽视覅偶尔回复而韩国is的hi多少个is多个收到货IGis个his读后感is多个hi韩国ID深V出魔抗VBUI欧盟是的归属感就是 属地化工is多个hi是个 是个hi第三帝国会死哦低功耗is电话公司工会",
-  //     "JUN 26"),
-  // Notification(
-  //     "assets/Illustration4.png",
-  //     "swiftui",
-  //     "大家忽视覅偶尔回复而韩国is的hi多少个is多个收到货IGis个his读后感is多个hi韩国ID深V出魔抗VBUI欧盟是的归属感就是 属地化工is多个hi是个 是个hi第三帝国会死哦低功耗is电话��司工会",
-  //     "JUN 26"),
-  // Notification(
-  //     "assets/Certificate1.png",
-  //     "swiftui",
-  //     "大家忽视覅偶尔回复而韩国is的hi多少个is多个收到货IGis个his读后感is多个hi韩国ID深V出魔抗VBUI欧��是的归属感就是 属地化工is多个hi是个 是个hi第三���国会死哦低功耗is电话公司工会",
-  //     "JUN 26"),
-  // Notification(
-  //     "assets/Certificate2.png",
-  //     "swiftui",
-  //     "大家忽视覅偶尔回复而韩国is的hi多少个is多个收到货IGis个his读后感is多个hi韩国ID深V出魔抗VBUI欧盟是的归属感就是 属地化工is多个hi是个 是个hi第三帝国会死哦低功耗is电话公司工会",
-  //     "JUN 26"),
-  // Notification(
-  //     "assets/Certificate3.png",
-  //     "swiftui",
-  //     "大家忽视覅偶���回复而韩国is的hi多少个is多个收到货IGis个his读后感is多个hi韩国ID深V出魔抗VBUI欧盟是的归属感就是 属地化工is多个hi是个 是个hi第三帝国会死哦低功耗is电话公司工会",
-  //     "JUN 26"),
 ];
