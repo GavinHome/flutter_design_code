@@ -33,7 +33,7 @@ class NotificationDetailPage extends StatelessWidget {
                       child: Column(
                         children: <Widget>[
                           new Image.asset(
-                            "assets/Background.png",
+                            notification.image,
                             fit: BoxFit.fitHeight,
                             alignment: Alignment.bottomCenter,
                           )
@@ -57,9 +57,9 @@ class NotificationDetailPage extends StatelessWidget {
 }
 
 class NotificationsListItem extends StatelessWidget {
-  final NotificationModel _notification;
+  final NotificationModel notification;
 
-  NotificationsListItem(this._notification);
+  NotificationsListItem({Key key, this.notification}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -73,13 +73,13 @@ class NotificationsListItem extends StatelessWidget {
                 color: const Color(0xffe6eaf3),
                 borderRadius: BorderRadius.circular(10)),
             child: new Image.asset(
-              _notification.image,
+              notification.image,
               width: 80,
               height: 80,
               fit: BoxFit.contain,
             )),
       ),
-      title: Text(_notification.title,
+      title: Text(notification.title,
           style: Theme.of(context)
               .textTheme
               .title
@@ -88,14 +88,14 @@ class NotificationsListItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            _notification.text,
+            notification.text,
             strutStyle: StrutStyle(leading: 0.5),
             style: Theme.of(context).textTheme.subtitle.copyWith(),
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),
           Text(
-            _notification.date,
+            notification.date,
             strutStyle: StrutStyle(leading: 0.5),
             style: Theme.of(context)
                 .textTheme
@@ -119,7 +119,7 @@ class NotificationsListItem extends StatelessWidget {
             context,
             MaterialPageRoute(
                 builder: (context) => NotificationDetailPage(
-                      notification: _notification,
+                      notification: notification,
                     )));
       },
     );
@@ -127,23 +127,55 @@ class NotificationsListItem extends StatelessWidget {
 }
 
 class NotificationList extends StatelessWidget {
-  final List<NotificationModel> _notifications;
+  final List<NotificationModel> notifications;
 
-  NotificationList(this._notifications);
+  NotificationList({Key key, this.notifications, this.onChanged})
+      : super(key: key);
+
+  final ValueChanged<int> onChanged;
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      shrinkWrap: true,
-      padding: EdgeInsets.symmetric(vertical: 8.0),
-      children: _buildContactsList(),
-    );
-  }
+    // return ListView(
+    //   shrinkWrap: true,
+    //   padding: EdgeInsets.symmetric(vertical: 8.0),
+    //   children: _buildContactsList(),
+    // );
 
-  List<NotificationsListItem> _buildContactsList() {
-    return _notifications
-        .map((contact) => NotificationsListItem(contact))
-        .toList();
+    // List<NotificationsListItem> _buildContactsList() {
+    //   return _notifications
+    //       .map((contact) => NotificationsListItem(contact))
+    //       .toList();
+    // }
+
+    return ListView.builder(
+      itemCount: notifications.length,
+      itemBuilder: (context, index) {
+        final item = notifications[index];
+
+        return Dismissible(
+          // Each Dismissible must contain a Key. Keys allow Flutter to
+          // uniquely identify widgets.
+          key: Key(item.title),
+          // Provide a function that tells the app
+          // what to do after an item has been swiped away.
+          onDismissed: (direction) {
+            // Remove the item from the data source.
+            // setState(() {
+            //   items.removeAt(index);
+            // });
+            onChanged(index);
+
+            // Then show a snackbar.
+            Scaffold.of(context).showSnackBar(
+                SnackBar(content: Text("${item.title} dismissed")));
+          },
+          // Show a red background as the item is swiped away.
+          background: Container(color: Colors.red),
+          child: NotificationsListItem(notification: item),
+        );
+      },
+    );
   }
 }
 
@@ -159,6 +191,12 @@ class _ListPageState extends State<NotificationPage> {
 
   _buildNotificationList() {
     return notificationsData;
+  }
+
+  _handleSwitchBoxLessChanged(int index) {
+    setState(() {
+      notifications.removeAt(index);
+    });
   }
 
   @override
@@ -177,10 +215,10 @@ class _ListPageState extends State<NotificationPage> {
               icon: Icon(Icons.add),
               tooltip: "Add update",
               onPressed: () {
-               setState(() {
-                 notifications.add(NotificationModel(
-                    "assets/Illustration1.png", "new title", "new text", "")); 
-               });
+                setState(() {
+                  notifications.add(NotificationModel(
+                      "assets/Illustration1.png", "new title", "new text", ""));
+                });
               },
             ),
             IconButton(
@@ -193,7 +231,9 @@ class _ListPageState extends State<NotificationPage> {
           ],
         ),
         body: Container(
-          child: NotificationList(notifications),
+          child: NotificationList(
+              notifications: notifications,
+              onChanged: _handleSwitchBoxLessChanged),
         ));
   }
 }
