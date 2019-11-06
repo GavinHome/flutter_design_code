@@ -57,7 +57,7 @@ class NotificationsListItem extends StatelessWidget {
   final NotificationModel _notification;
 
   NotificationsListItem(this._notification);
-  
+
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -65,15 +65,14 @@ class NotificationsListItem extends StatelessWidget {
       leading: AspectRatio(
         aspectRatio: 1,
         child: Container(
-            width: 80,
-            height: 80,
             decoration: BoxDecoration(
-              color: const Color(0xffe6eaf3),
-              //borderRadius: BorderRadius.circular(20)
-            ),
+                color: const Color(0xffe6eaf3),
+                borderRadius: BorderRadius.circular(10)),
             child: new Image.asset(
               _notification.image,
-              fit: BoxFit.fill,
+              width: 80,
+              height: 80,
+              fit: BoxFit.contain,
             )),
       ),
       title: Text(_notification.title,
@@ -218,7 +217,7 @@ List<NotificationModel> notifications = [
       "JUN 26"),
   NotificationModel(
       "assets/Certificate4.png",
-      "swiftui",
-      "大家忽视覅偶尔回复而韩国is的hi多少个is多个收到货IGis个his读后感is多个hi韩国ID深V出魔抗VBUI欧盟是的归属感就是 属地化工is多个hi是个 是个hi第三帝国会死哦低功耗is电话公司工会",
+      "Angular",
+      "了解如何使用高级合成、布局、图形和动画在Angular中构建自定义视图和控件看一个高性能的演示，可动画控制和观看它在代码中一步一步深入了解迅捷的布局体系",
       "JUN 26"),
 ];
