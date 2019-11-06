@@ -1,55 +1,58 @@
 import 'package:flutter/material.dart';
 
-class NotificationView extends StatelessWidget {
-  NotificationView({Key key, this.notification}) : super(key: key);
+class NotificationDetailPage extends StatelessWidget {
+  NotificationDetailPage({Key key, this.notification}) : super(key: key);
   final NotificationModel notification;
 
   @override
   Widget build(BuildContext context) {
-    return new Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.all(30),
-            decoration: new BoxDecoration(
-              borderRadius: new BorderRadius.all(const Radius.circular(10.0)),
-            ),
-            child: Column(
-              children: <Widget>[
-                Container(
-                  padding:
-                      EdgeInsets.only(top: 18, left: 10, right: 10, bottom: 20),
-                  child: Text(notification.title,
-                      style: Theme.of(context).textTheme.title.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(0xFF, 0x5E, 0xCD, 0xFA))),
+    return Scaffold(
+        appBar: AppBar(),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.all(30),
+                decoration: new BoxDecoration(
+                  borderRadius:
+                      new BorderRadius.all(const Radius.circular(10.0)),
                 ),
-                Container(
-                  alignment: Alignment.bottomLeft,
-                  child: Column(
-                    children: <Widget>[
-                      new Image.asset(
-                        "assets/Background.png",
-                        fit: BoxFit.fitHeight,
-                        alignment: Alignment.bottomCenter,
-                      )
-                    ],
-                  ),
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.only(
+                          top: 18, left: 10, right: 10, bottom: 20),
+                      child: Text(notification.title,
+                          style: Theme.of(context).textTheme.title.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(0xFF, 0x5E, 0xCD, 0xFA))),
+                    ),
+                    Container(
+                      alignment: Alignment.bottomLeft,
+                      child: Column(
+                        children: <Widget>[
+                          new Image.asset(
+                            "assets/Background.png",
+                            fit: BoxFit.fitHeight,
+                            alignment: Alignment.bottomCenter,
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(top: 18, left: 10, right: 10),
+                      child: Text(
+                        notification.text,
+                        style: TextStyle(),
+                      ),
+                    )
+                  ],
                 ),
-                Container(
-                  padding: EdgeInsets.only(top: 18, left: 10, right: 10),
-                  child: Text(
-                    notification.text,
-                    style: TextStyle(),
-                  ),
-                )
-              ],
-            ),
-          )
-        ],
-      ),
-    );
+              )
+            ],
+          ),
+        ));
   }
 }
 
@@ -61,6 +64,7 @@ class NotificationsListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      contentPadding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
       //leading: CircleAvatar(backgroundImage: new AssetImage(_notification.image)),
       leading: AspectRatio(
         aspectRatio: 1,
@@ -110,6 +114,14 @@ class NotificationsListItem extends StatelessWidget {
           )
         ],
       ),
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => NotificationDetailPage(
+                      notification: _notification,
+                    )));
+      },
     );
   }
 }
@@ -135,24 +147,38 @@ class NotificationList extends StatelessWidget {
   }
 }
 
-class NotificationPage extends StatelessWidget {
+class NotificationPage extends StatefulWidget {
+  NotificationPage({Key key}) : super(key: key);
+
+  @override
+  _ListPageState createState() => _ListPageState();
+}
+
+class _ListPageState extends State<NotificationPage> {
+  List<NotificationModel> notifications;
+
   _buildNotificationList() {
-    return notifications;
+    return notificationsData;
+  }
+
+  @override
+  void initState() {
+    notifications = _buildNotificationList();
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          // Here we take the value from the MyHomePage object that was created by
-          // the App.build method, and use it to set our appbar title.
           title: Text("Notifications"),
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.add),
               tooltip: "Add update",
               onPressed: () {
-                print("Alarm");
+                notifications.add(NotificationModel(
+                    "assets/Illustration1.png", "new title", "new text", ""));
               },
             ),
             IconButton(
@@ -165,7 +191,7 @@ class NotificationPage extends StatelessWidget {
           ],
         ),
         body: Container(
-          child: NotificationList(_buildNotificationList()),
+          child: NotificationList(notifications),
         ));
   }
 }
@@ -179,7 +205,7 @@ class NotificationModel {
   NotificationModel(this.image, this.title, this.text, this.date);
 }
 
-List<NotificationModel> notifications = [
+List<NotificationModel> notificationsData = [
   NotificationModel(
       "assets/Illustration1.png",
       "Swiftui",
@@ -221,3 +247,36 @@ List<NotificationModel> notifications = [
       "了解如何使用高级合成、布局、图形和动画在Angular中构建自定义视图和控件看一个高性能的演示，可动画控制和观看它在代码中一步一步深入了解迅捷的布局体系",
       "JUN 26"),
 ];
+
+// class NotificationPage extends StatelessWidget {
+//   _buildNotificationList() {
+//     return notifications;
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//         appBar: AppBar(
+//           title: Text("Notifications"),
+//           actions: <Widget>[
+//             IconButton(
+//               icon: Icon(Icons.add),
+//               tooltip: "Add update",
+//               onPressed: () {
+//                 print("Alarm");
+//               },
+//             ),
+//             IconButton(
+//               icon: Icon(Icons.settings),
+//               tooltip: "Settings",
+//               onPressed: () {
+//                 print("Alarm");
+//               },
+//             ),
+//           ],
+//         ),
+//         body: Container(
+//           child: NotificationList(_buildNotificationList()),
+//         ));
+//   }
+// }
