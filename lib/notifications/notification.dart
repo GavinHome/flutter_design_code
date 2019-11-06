@@ -177,8 +177,10 @@ class _ListPageState extends State<NotificationPage> {
               icon: Icon(Icons.add),
               tooltip: "Add update",
               onPressed: () {
-                notifications.add(NotificationModel(
-                    "assets/Illustration1.png", "new title", "new text", ""));
+               setState(() {
+                 notifications.add(NotificationModel(
+                    "assets/Illustration1.png", "new title", "new text", "")); 
+               });
               },
             ),
             IconButton(
