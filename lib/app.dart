@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_design_code/certificates/content.dart';
 import 'package:flutter_design_code/home/home.dart';
 import 'package:flutter_design_code/notifications/notification.dart';
+import 'package:flutter_design_code/settings/settings.dart';
 
 import 'certificates/certificates.dart';
 
@@ -49,7 +50,7 @@ class _AppPageState extends State<AppPage> with SingleTickerProviderStateMixin {
         children: <Widget>[HomePage(), ContentView(), NotificationPage()],
         controller: controller,
       ),
-      //body: CertificationsPage(),
+      //body: SettingsPage(),
       bottomNavigationBar: Material(
         color: Colors.blue,
         child: TabBar(

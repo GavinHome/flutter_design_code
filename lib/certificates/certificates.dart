@@ -196,14 +196,14 @@ class CertificateModel {
 
 List<CertificateModel> certificateData = [
   CertificateModel(
-      title: "OC", image: "assets/Certificate1.png", width: 230, height: 150),
+      title: "OC", image: "assets/Certificate1.png", width: 230, height: 160),
   CertificateModel(
       title: "Swift",
-      image: "assets/Certificate2.png",
+      image: "assets/Certificate3.png",
       width: 230,
-      height: 150),
+      height: 160),
   CertificateModel(
-      title: "Java", image: "assets/Certificate3.png", width: 230, height: 150),
+      title: "Java", image: "assets/Certificate1.png", width: 230, height: 160),
   CertificateModel(
-      title: "GO", image: "assets/Certificate4.png", width: 230, height: 150)
+      title: "GO", image: "assets/Certificate3.png", width: 230, height: 160)
 ];

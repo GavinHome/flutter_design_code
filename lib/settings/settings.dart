@@ -5,7 +5,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter_counter/flutter_counter.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
+class SettingsPages extends StatelessWidget {
+  SettingsPages({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+     return Scaffold(
+        appBar: AppBar(),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              SettingsPage()
+            ],
+          ),
+        ));
+  }
+}
+
+
 class SettingsPage extends StatefulWidget {
+  
+  SettingsPage({Key key}) : super(key: key);
+
   @override
   _SettingsPageState createState() {
     return _SettingsPageState();
@@ -23,9 +45,8 @@ class _SettingsPageState extends State<SettingsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return new Scaffold(
       appBar: AppBar(
-        title: Text("Settings"),
       ),
       body: Container(
         padding: EdgeInsets.all(15),

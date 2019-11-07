@@ -227,7 +227,7 @@ class _ListPageState extends State<NotificationPage> {
               tooltip: "Settings",
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SettingsPage()));
+                    MaterialPageRoute(builder: (context) => SettingsPages()));
               },
             ),
           ],
