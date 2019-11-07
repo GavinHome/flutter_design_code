@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CourseView extends StatelessWidget {
-  CourseView({Key key, this.course}) : super(key: key);
+class CourseItem extends StatelessWidget {
+  CourseItem({Key key, this.course}) : super(key: key);
   final Course course;
 
   @override
@@ -72,10 +72,10 @@ class CourseView extends StatelessWidget {
   }
 }
 
-class CoursesView extends StatelessWidget {
+class CoursesPage extends StatelessWidget {
   List<Widget> getCourses() {
     return courses.map((Course item) {
-      return new CourseView(course: item);
+      return new CourseItem(course: item);
     }).toList();
   }
 
@@ -110,20 +110,11 @@ class CoursesView extends StatelessWidget {
           Container(
               height: 450,
               //margin: EdgeInsets.only(left: 15),
-              child: MediaQuery.removePadding(
-                context: context,
-                removeTop: true,
-                child: ListView(
-                  padding: EdgeInsets.zero,
-                  scrollDirection: Axis.horizontal,
-                  children: getCourses(),
-                ),
+              child: ListView(
+                padding: EdgeInsets.zero,
+                scrollDirection: Axis.horizontal,
+                children: getCourses(),
               ))
-          // Expanded(
-          //   child: ListView(
-          //     padding: EdgeInsets.all(0),
-          //       scrollDirection: Axis.horizontal, children: getCourses()),
-          // ),
         ],
       ),
     );

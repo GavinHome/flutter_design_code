@@ -93,7 +93,7 @@ class CardBottomView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 60),
+      //margin: EdgeInsets.only(top: 60),
       alignment: Alignment.bottomCenter,
       padding: EdgeInsets.all(20),    
       constraints: BoxConstraints(minWidth: 0, maxWidth: double.infinity, maxHeight: 300),

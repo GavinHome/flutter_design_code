@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_design_code/certificates/card.dart';
-import 'package:flutter_design_code/certificates/certificate.dart';
 import 'dart:math';
+import 'package:flutter_design_code/certificates/card.dart';
+import 'package:flutter_design_code/certificates/certificates.dart';
 
 class ContentView extends StatefulWidget {
   ContentView({Key key}) : super(key: key);
@@ -56,7 +56,7 @@ class _ContentViewState extends State<ContentView> {
                           _show = !_show;
                         });
                       },
-                      child: CertificateView(item: "")),
+                      child: CertificateItem(item: CertificateModel(title: "UI Design", image: ""))),
                 ),
               ],
             ),

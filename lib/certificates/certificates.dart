@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class CertificateView extends StatefulWidget {
-  CertificateView({Key key, this.item}) : super(key: key);
+class CertificateItem extends StatefulWidget {
+  CertificateItem({Key key, this.item}) : super(key: key);
 
-  final String item;
+  final CertificateModel item;
 
   @override
-  _CertificateViewState createState() => _CertificateViewState();
+  _CertificateItemState createState() => _CertificateItemState();
 }
 
-class _CertificateViewState extends State<CertificateView> {
+class _CertificateItemState extends State<CertificateItem> {
   @override
   Widget build(BuildContext context) {
     return new Center(
@@ -92,3 +92,67 @@ class _CertificateViewState extends State<CertificateView> {
     );
   }
 }
+
+class CertificateList extends StatelessWidget {
+  final List<CertificateModel> certificates;
+
+  CertificateList({Key key, this.certificates}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      itemCount: certificates.length,
+      itemBuilder: (context, index) {
+        final item = certificates[index];
+
+        return Container(
+          child: CertificateItem(item: item),
+        );
+      },
+    );
+  }
+}
+
+class CertificationsPage extends StatefulWidget {
+  CertificationsPage({Key key}) : super(key: key);
+
+  @override
+  _CertificationsPageState createState() => _CertificationsPageState();
+}
+
+class _CertificationsPageState extends State<CertificationsPage> {
+  List<CertificateModel> certificates;
+
+  _buildCertificateList() {
+    return certificateData;
+  }
+
+  @override
+  void initState() {
+    certificates = _buildCertificateList();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Container(
+        child: CertificateList(certificates: certificates),
+    ));
+  }
+}
+
+class CertificateModel {
+  String title;
+  String image;
+
+  CertificateModel({this.title, this.image});
+}
+
+List<CertificateModel> certificateData = [
+  CertificateModel(title: "OC", image: "assets/Certificate1.png"),
+  CertificateModel(title: "Swift", image: "assets/Certificate2.png"),
+  CertificateModel(title: "Java", image: "assets/Certificate3.png"),
+  CertificateModel(title: "GO", image: "assets/Certificate4.png"),
+];

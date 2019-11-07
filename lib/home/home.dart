@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_design_code/home/course.dart';
+import 'package:flutter_design_code/certificates/certificates.dart';
+import 'package:flutter_design_code/courses/courses.dart';
 import 'package:flutter_design_code/home/menu.dart';
 import 'package:flutter_design_code/notifications/notification.dart';
-//import 'package:flutter_design_code/home/course.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -28,17 +28,19 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.notifications),
             tooltip: "notifications",
             onPressed: () {
-               Navigator.push(context,
-                MaterialPageRoute(builder: (context) => NotificationPage()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => NotificationPage()));
             },
           ),
         ],
       ),
       body: Center(
-          child: Column(
+          child: ListView(
+        padding: EdgeInsets.zero,
+        scrollDirection: Axis.vertical,
         children: <Widget>[
-          CoursesView()
-        ],
+          CoursesPage(), 
+          CertificationsPage()],
       )),
       drawer: Drawer(
         child: MenusPage(),
