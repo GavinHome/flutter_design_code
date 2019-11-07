@@ -85,7 +85,7 @@ class CoursesView extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Container(
-            padding: EdgeInsets.only(top: 60, left: 15),
+            margin: EdgeInsets.only(top: 30, left: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -109,6 +109,7 @@ class CoursesView extends StatelessWidget {
           ),
           Container(
               height: 450,
+              //margin: EdgeInsets.only(left: 15),
               child: MediaQuery.removePadding(
                 context: context,
                 removeTop: true,

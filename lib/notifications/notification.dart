@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_design_code/settings/settings.dart';
 
 class NotificationDetailPage extends StatelessWidget {
   NotificationDetailPage({Key key, this.notification}) : super(key: key);
@@ -225,7 +226,8 @@ class _ListPageState extends State<NotificationPage> {
               icon: Icon(Icons.settings),
               tooltip: "Settings",
               onPressed: () {
-                print("Alarm");
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SettingsPage()));
               },
             ),
           ],
@@ -289,36 +291,3 @@ List<NotificationModel> notificationsData = [
       "了解如何使用高级合成、布局、图形和动画在Angular中构建自定义视图和控件看一个高性能的演示，可动画控制和观看它在代码中一步一步深入了解迅捷的布局体系",
       "JUN 26"),
 ];
-
-// class NotificationPage extends StatelessWidget {
-//   _buildNotificationList() {
-//     return notifications;
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//         appBar: AppBar(
-//           title: Text("Notifications"),
-//           actions: <Widget>[
-//             IconButton(
-//               icon: Icon(Icons.add),
-//               tooltip: "Add update",
-//               onPressed: () {
-//                 print("Alarm");
-//               },
-//             ),
-//             IconButton(
-//               icon: Icon(Icons.settings),
-//               tooltip: "Settings",
-//               onPressed: () {
-//                 print("Alarm");
-//               },
-//             ),
-//           ],
-//         ),
-//         body: Container(
-//           child: NotificationList(_buildNotificationList()),
-//         ));
-//   }
-// }
