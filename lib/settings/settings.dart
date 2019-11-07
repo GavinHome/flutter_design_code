@@ -1,27 +1,17 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-
-import 'package:flutter_counter/flutter_counter.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
-class SettingsPages extends StatelessWidget {
-  SettingsPages({Key key}) : super(key: key);
+// import 'package:flutter_counter/flutter_counter.dart';
+// import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
-  @override
-  Widget build(BuildContext context) {
-     return Scaffold(
-        appBar: AppBar(),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              SettingsPage()
-            ],
-          ),
-        ));
-  }
-}
+// class SettingsPages extends StatelessWidget {
+//   SettingsPages({Key key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//      return SettingsPage();
+//   }
+// }
 
 
 class SettingsPage extends StatefulWidget {
@@ -81,19 +71,19 @@ class _SettingsPageState extends State<SettingsPage> {
                   Text("$number Notification${number > 1 ? 's' : ''} per week"),
                   Column(
                     children: <Widget>[
-                      Counter(
-                        initialValue: number,
-                        minValue: 1,
-                        maxValue: 10,
-                        step: 1,
-                        decimalPlaces: 0,
-                        onChanged: (value) {
-                          // get the latest value from here
-                          setState(() {
-                            number = value;
-                          });
-                        },
-                      ),
+                      // Counter(
+                      //   initialValue: number,
+                      //   minValue: 1,
+                      //   maxValue: 10,
+                      //   step: 1,
+                      //   decimalPlaces: 0,
+                      //   onChanged: (value) {
+                      //     // get the latest value from here
+                      //     setState(() {
+                      //       number = value;
+                      //     });
+                      //   },
+                      // ),
                     ],
                   )
                 ],
