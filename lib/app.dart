@@ -3,6 +3,8 @@ import 'package:flutter_design_code/certificates/content.dart';
 import 'package:flutter_design_code/home/home.dart';
 import 'package:flutter_design_code/notifications/notification.dart';
 
+import 'certificates/certificates.dart';
+
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -47,6 +49,7 @@ class _AppPageState extends State<AppPage> with SingleTickerProviderStateMixin {
         children: <Widget>[HomePage(), ContentView(), NotificationPage()],
         controller: controller,
       ),
+      //body: CertificationsPage(),
       bottomNavigationBar: Material(
         color: Colors.blue,
         child: TabBar(

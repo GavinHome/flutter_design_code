@@ -12,13 +12,14 @@ class CertificateItem extends StatefulWidget {
 class _CertificateItemState extends State<CertificateItem> {
   @override
   Widget build(BuildContext context) {
-    return new Center(
+    return new Container(
+      margin: EdgeInsets.only(left: 15),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Container(
-            width: 340,
-            height: 220,
+            width: widget.item.width,
+            height: widget.item.height,
             decoration: new BoxDecoration(
                 color: const Color(0xff000000),
                 borderRadius: new BorderRadius.all(const Radius.circular(10.0)),
@@ -39,7 +40,7 @@ class _CertificateItemState extends State<CertificateItem> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text('UI Design',
+                          Text(widget.item.title,
                               textAlign: TextAlign.start,
                               style: Theme.of(context).textTheme.title.copyWith(
                                   fontWeight: FontWeight.bold,
@@ -76,11 +77,16 @@ class _CertificateItemState extends State<CertificateItem> {
                   alignment: Alignment.bottomLeft,
                   child: Column(
                     children: <Widget>[
-                      new Image.asset(
-                        "assets/Background.png",
-                        fit: BoxFit.fitHeight,
-                        alignment: Alignment.bottomCenter,
-                      )
+                      Container(
+                          child: new Image.asset(widget.item.image,
+                              fit: BoxFit.fitHeight))
+                      // AspectRatio(
+                      //   aspectRatio: 3,
+                      //   child: new Image.asset(
+                      //     widget.item.image,
+                      //     fit: BoxFit.fitHeight,
+                      //   ),
+                      // )
                     ],
                   ),
                 )
@@ -136,23 +142,68 @@ class _CertificationsPageState extends State<CertificationsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Container(
-        child: CertificateList(certificates: certificates),
-    ));
+    // return new Container(
+    //   child: Container(
+    //     height: 220,
+    //     child: CertificateList(certificates: certificates),
+    //   ),
+    // );
+    return new Container(
+      child: Column(
+        children: <Widget>[
+          Container(
+            margin: EdgeInsets.only(top: 30, left: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Container(
+                  alignment: Alignment.topLeft,
+                  child: Text('Certificates',
+                      style:
+                          TextStyle(fontWeight: FontWeight.w900, fontSize: 25)),
+                ),
+                Container(
+                    child: Text(
+                  '4 certificates',
+                  style: Theme.of(context)
+                      .textTheme
+                      .body2
+                      .copyWith(color: const Color(0xff808080)),
+                ))
+              ],
+            ),
+          ),
+          Container(
+              height: 220,
+              alignment: Alignment.topLeft,
+              //margin: EdgeInsets.only(left: 15),
+              child: CertificateList(certificates: certificates))
+        ],
+      ),
+    );
   }
 }
 
 class CertificateModel {
   String title;
   String image;
+  double width;
+  double height;
 
-  CertificateModel({this.title, this.image});
+  CertificateModel({this.title, this.image, this.width, this.height});
 }
 
 List<CertificateModel> certificateData = [
-  CertificateModel(title: "OC", image: "assets/Certificate1.png"),
-  CertificateModel(title: "Swift", image: "assets/Certificate2.png"),
-  CertificateModel(title: "Java", image: "assets/Certificate3.png"),
-  CertificateModel(title: "GO", image: "assets/Certificate4.png"),
+  CertificateModel(
+      title: "OC", image: "assets/Certificate1.png", width: 230, height: 150),
+  CertificateModel(
+      title: "Swift",
+      image: "assets/Certificate2.png",
+      width: 230,
+      height: 150),
+  CertificateModel(
+      title: "Java", image: "assets/Certificate3.png", width: 230, height: 150),
+  CertificateModel(
+      title: "GO", image: "assets/Certificate4.png", width: 230, height: 150)
 ];

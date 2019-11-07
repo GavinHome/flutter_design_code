@@ -36,11 +36,8 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Center(
           child: ListView(
-        padding: EdgeInsets.zero,
-        scrollDirection: Axis.vertical,
-        children: <Widget>[
-          CoursesPage(), 
-          CertificationsPage()],
+            scrollDirection: Axis.vertical,
+        children: <Widget>[CoursesPage(), CertificationsPage()],
       )),
       drawer: Drawer(
         child: MenusPage(),

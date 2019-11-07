@@ -108,7 +108,7 @@ class CoursesPage extends StatelessWidget {
             ),
           ),
           Container(
-              height: 450,
+              height: 440,
               //margin: EdgeInsets.only(left: 15),
               child: ListView(
                 padding: EdgeInsets.zero,

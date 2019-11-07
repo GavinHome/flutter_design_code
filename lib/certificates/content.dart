@@ -56,7 +56,7 @@ class _ContentViewState extends State<ContentView> {
                           _show = !_show;
                         });
                       },
-                      child: CertificateItem(item: CertificateModel(title: "UI Design", image: ""))),
+                      child: CertificateItem(item: CertificateModel(title: "UI Design", image: "assets/Certificate1.png", width: 340, height: 220))),
                 ),
               ],
             ),
