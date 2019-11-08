@@ -54,7 +54,7 @@ class _ContentViewState extends State<ContentView> {
                             )),
                       ),
                     ),
-                    top: _show ? screenHeight / 2 - 425 : screenHeight / 2 - 55,
+                    top: _show ? screenHeight / 2 - 445 : screenHeight / 2 - 85,
                     left:
                         _show ? screenHeight / 2 - 300 : screenWidth / 2 - 170,
                   ),
@@ -78,7 +78,7 @@ class _ContentViewState extends State<ContentView> {
                                 offset: _show ? Offset(0, 55) : Offset(0, 55))),
                       ),
                     ),
-                    top: _show ? screenHeight / 2 - 220 : screenHeight / 2 - 25,
+                    top: _show ? screenHeight / 2 - 245 : screenHeight / 2 - 55,
                     left: _show ? screenWidth / 2 - 150 : screenWidth / 2 - 170,
                   ),
                   AnimatedPositioned(
@@ -107,7 +107,7 @@ class _ContentViewState extends State<ContentView> {
                                     height: 220))),
                       ),
                     ),
-                    top: screenHeight / 2,
+                    top: screenHeight / 2 - 30,
                     left: screenWidth / 2 - 170,
                   ),
                 ],
