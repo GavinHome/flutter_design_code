@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_design_code/certificates/content.dart';
 import 'package:flutter_design_code/home/home.dart';
 import 'package:flutter_design_code/notifications/notification.dart';
-import 'package:flutter_design_code/settings/settings.dart';
-
-import 'certificates/certificates.dart';
 
 class App extends StatelessWidget {
   @override

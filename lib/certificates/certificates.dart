@@ -13,7 +13,7 @@ class _CertificateItemState extends State<CertificateItem> {
   @override
   Widget build(BuildContext context) {
     return new Container(
-      margin: EdgeInsets.only(left: 15),
+      //margin: EdgeInsets.only(left: 15),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[

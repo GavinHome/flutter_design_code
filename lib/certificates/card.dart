@@ -62,6 +62,7 @@ class TitleView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      //margin: EdgeInsets.only(bottom: 50),
       padding: EdgeInsets.only(top: 60, left: 15, right: 15, bottom: 0),
       child: Column(
         children: <Widget>[
@@ -93,10 +94,10 @@ class CardBottomView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      //margin: EdgeInsets.only(top: 60),
+      // margin: EdgeInsets.only(top: 60),
       alignment: Alignment.bottomCenter,
       padding: EdgeInsets.all(20),    
-      constraints: BoxConstraints(minWidth: 0, maxWidth: double.infinity, maxHeight: 300),
+      //constraints: BoxConstraints(minWidth: 0, maxWidth: double.infinity, maxHeight: 100),
       decoration: new BoxDecoration(
         boxShadow: <BoxShadow>[
           new BoxShadow(
@@ -108,6 +109,7 @@ class CardBottomView extends StatelessWidget {
             topLeft: Radius.circular(20), topRight: Radius.circular(20)),
       ),
       child: Column(
+        //mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Container(
             width: 60,
