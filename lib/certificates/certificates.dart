@@ -113,7 +113,10 @@ class CertificateList extends StatelessWidget {
         final item = certificates[index];
 
         return Container(
-          child: CertificateItem(item: item),
+          child: Container(
+            margin: EdgeInsets.only(left: 15),
+            child: CertificateItem(item: item),
+          ),
         );
       },
     );

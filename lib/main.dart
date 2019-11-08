@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 //import 'package:flutter_design_code/preview.dart';
-// import 'app.dart';
-// void main() => runApp(App());
+import 'app.dart';
+void main() => runApp(App());
 
 // import 'package:flutter_design_code/home/home.dart';
 // void main() => runApp(HomePage());
