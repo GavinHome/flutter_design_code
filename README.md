@@ -17,4 +17,5 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Show Case
 
-<img src="assets/showcases/1.png" height="300em" /><img src="assets/showcases/2.png" height="300em" /><img src="assets/showcases/3.png" height="300em" /><img src="assets/showcases/4.png" height="300em" /><img src="assets/showcases/5.png" height="300em" /><img src="assets/showcases/6.png" height="300em" /><img src="assets/showcases/show_394x740.gif" height="300em" />
+<img src="assets/showcases/1.png" height="300em" /> <img src="assets/showcases/2.png" height="300em" /> <img src="assets/showcases/3.png" height="300em" /> <img src="assets/showcases/4.png" height="300em" /> <img src="assets/showcases/5.png" height="300em" /> <img src="assets/showcases/6.png" height="300em" /> <img src="assets/showcases/show_394x740.gif" height="300em" />
+
