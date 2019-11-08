@@ -116,12 +116,34 @@ class NotificationsListItem extends StatelessWidget {
         ],
       ),
       onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => NotificationDetailPage(
-                      notification: notification,
-                    )));
+        // Navigator.push(
+        //     context,
+        //     MaterialPageRoute(
+        //         builder: (context) => NotificationDetailPage(
+        //               notification: notification,
+        //             )));
+
+        Navigator.of(context).push(PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              GestureDetector(
+                  child: NotificationDetailPage(
+                    notification: notification,
+                  ),
+                  onTap: () => Navigator.pop(context)),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            var begin = Offset(1.0, 0.0);
+            var end = Offset.zero;
+            var curve = Curves.easeInOutCubic;
+
+            var tween =
+                Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+            return SlideTransition(
+              position: animation.drive(tween),
+              child: child,
+            );
+          },
+        ));
       },
     );
   }
@@ -226,8 +248,29 @@ class _ListPageState extends State<NotificationPage> {
               icon: Icon(Icons.settings),
               tooltip: "Settings",
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SettingsPage()));
+                // Navigator.push(context,
+                //     MaterialPageRoute(builder: (context) => SettingsPage()));
+
+                Navigator.of(context).push(PageRouteBuilder(
+                  pageBuilder: (context, animation, secondaryAnimation) =>
+                      GestureDetector(
+                          child: SettingsPage(),
+                          onTap: () => Navigator.pop(context)),
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                    var begin = Offset(1.0, 0.0);
+                    var end = Offset.zero;
+                    var curve = Curves.easeInOutCubic;
+
+                    var tween = Tween(begin: begin, end: end)
+                        .chain(CurveTween(curve: curve));
+
+                    return SlideTransition(
+                      position: animation.drive(tween),
+                      child: child,
+                    );
+                  },
+                ));
               },
             ),
           ],

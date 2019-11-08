@@ -23,49 +23,54 @@ class _HomePageState extends State<HomePage> {
             tooltip: "person",
             onPressed: () {
               Navigator.of(context).push(PageRouteBuilder(
-                  pageBuilder: (context, animation, secondaryAnimation) =>
-                      GestureDetector(child: ContentView(),
-                      onTap: () => Navigator.pop(context),),
-                  transitionsBuilder:
-                      (context, animation, secondaryAnimation, child) {
-                    var begin = Offset(0.0, 1.0);
-                    var end = Offset.zero;
-                    var curve = Curves.ease;
+                pageBuilder: (context, animation, secondaryAnimation) =>
+                    GestureDetector(
+                  child: ContentView(),
+                  onTap: () => Navigator.pop(context),
+                ),
+                transitionsBuilder:
+                    (context, animation, secondaryAnimation, child) {
+                  var begin = Offset(0.0, 1.0);
+                  var end = Offset.zero;
+                  var curve = Curves.ease;
 
-                    var tween = Tween(begin: begin, end: end)
-                        .chain(CurveTween(curve: curve));
+                  var tween = Tween(begin: begin, end: end)
+                      .chain(CurveTween(curve: curve));
 
-                    return SlideTransition(
-                      position: animation.drive(tween),
-                      child: child,
-                    );
-                  },
-                ));
-
-              // showDialog<Null>(
-              //   context: context,
-              //   barrierDismissible: true,
-              //   builder: (BuildContext context) {
-              //     return Scaffold(
-              //       body: GestureDetector(
-              //         child: ContentView(),
-              //         onTap: () {
-              //           Navigator.pop(context);
-              //         },
-              //       ),
-              //     );
-              //   },
-              // ).then((val) {
-              //   print(val);
-              // });
+                  return SlideTransition(
+                    position: animation.drive(tween),
+                    child: child,
+                  );
+                },
+              ));
             },
           ),
           IconButton(
             icon: Icon(Icons.notifications),
             tooltip: "notifications",
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => NotificationPage()));
+              // Navigator.push(context,
+              //     MaterialPageRoute(builder: (context) => NotificationPage()));
+              Navigator.of(context).push(PageRouteBuilder(
+                pageBuilder: (context, animation, secondaryAnimation) =>
+                    GestureDetector(
+                        child: NotificationPage(),
+                        onTap: () => Navigator.pop(context)),
+                transitionsBuilder:
+                    (context, animation, secondaryAnimation, child) {
+                  var begin = Offset(1.0, 0.0);
+                  var end = Offset.zero;
+                  var curve = Curves.easeInOutCubic;
+
+                  var tween = Tween(begin: begin, end: end)
+                      .chain(CurveTween(curve: curve));
+
+                  return SlideTransition(
+                    position: animation.drive(tween),
+                    child: child,
+                  );
+                },
+              ));
             },
           ),
         ],

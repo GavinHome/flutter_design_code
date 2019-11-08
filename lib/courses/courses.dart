@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_design_code/certificates/content.dart';
 
 class CourseItem extends StatelessWidget {
   CourseItem({Key key, this.course}) : super(key: key);
@@ -73,9 +74,32 @@ class CourseItem extends StatelessWidget {
 }
 
 class CoursesPage extends StatelessWidget {
-  List<Widget> getCourses() {
+  List<Widget> getCourses(context) {
     return courses.map((Course item) {
-      return new CourseItem(course: item);
+      return GestureDetector(
+        onTap: () => {
+          Navigator.of(context).push(PageRouteBuilder(
+            pageBuilder: (context, animation, secondaryAnimation) =>
+                GestureDetector(
+                    child: ContentView(), onTap: () => Navigator.pop(context)),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              var begin = Offset(0.0, 1.0);
+              var end = Offset.zero;
+              var curve = Curves.ease;
+
+              var tween =
+                  Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+              return SlideTransition(
+                position: animation.drive(tween),
+                child: child,
+              );
+            },
+          ))
+        },
+        child: CourseItem(course: item),
+      );
     }).toList();
   }
 
@@ -113,7 +137,7 @@ class CoursesPage extends StatelessWidget {
               child: ListView(
                 padding: EdgeInsets.zero,
                 scrollDirection: Axis.horizontal,
-                children: getCourses(),
+                children: getCourses(context),
               ))
         ],
       ),
