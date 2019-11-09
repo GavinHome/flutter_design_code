@@ -13,74 +13,73 @@ class _CertificateItemState extends State<CertificateItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
-            width: widget.item.width,
-            height: widget.item.height,
-            decoration: new BoxDecoration(
-                color: const Color(0xff000000),
-                borderRadius: new BorderRadius.all(const Radius.circular(10.0)),
-                boxShadow: <BoxShadow>[
-                  new BoxShadow(
-                    blurRadius: 20.0,
-                  ),
-                ]),
-            child: Column(
+      width: widget.item.width,
+      height: widget.item.height,
+      decoration: new BoxDecoration(
+          color: const Color(0xff000000),
+          borderRadius: new BorderRadius.all(const Radius.circular(10.0)),
+          boxShadow: <BoxShadow>[
+            new BoxShadow(
+              blurRadius: 20.0,
+            ),
+          ]),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.only(top: 18, left: 10, right: 10),
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Container(
-                  padding: EdgeInsets.only(top: 18, left: 10, right: 10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(widget.item.title,
-                              textAlign: TextAlign.start,
-                              style: Theme.of(context).textTheme.title.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                  color:
-                                      Color.fromARGB(0xFF, 0x5E, 0xCD, 0xFA))),
-                          Padding(
-                            padding: EdgeInsets.only(top: 6),
-                            child: Text(
-                              'Certificate',
-                              style: TextStyle(
-                                color: const Color(0xffffffff),
-                              ),
-                            ),
-                          ),
-                        ],
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(widget.item.title,
+                        textAlign: TextAlign.start,
+                        style: Theme.of(context).textTheme.title.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(0xFF, 0x5E, 0xCD, 0xFA))),
+                    Padding(
+                      padding: EdgeInsets.only(top: 6),
+                      child: Text(
+                        'Certificate',
+                        style: TextStyle(
+                          color: const Color(0xffffffff),
+                        ),
                       ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Padding(
-                            padding: EdgeInsets.only(top: 6),
-                            child: new Image.asset(
-                              "assets/Logo.png",
-                              width: 30,
-                              height: 30,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                Container(
-                  alignment: Alignment.bottomLeft,
-                  child: Column(
-                    children: <Widget>[
-                      Container(
-                          child: new Image.asset(widget.item.image,
-                              fit: BoxFit.fitHeight))
-                    ],
-                  ),
-                )
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.only(top: 6),
+                      child: new Image.asset(
+                        "assets/Logo.png",
+                        width: 30,
+                        height: 30,
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
-          );
+          ),
+          Container(
+            alignment: Alignment.bottomLeft,
+            child: Column(
+              children: <Widget>[
+                Container(
+                    child: new Image.asset(widget.item.image,
+                        fit: BoxFit.fitHeight))
+              ],
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
 
@@ -98,10 +97,8 @@ class CertificateList extends StatelessWidget {
         final item = certificates[index];
 
         return Container(
-          child: Container(
-            margin: EdgeInsets.only(left: 15),
-            child: CertificateItem(item: item),
-          ),
+          margin: EdgeInsets.only(top: 30, left: 15, bottom: 30),
+          child: CertificateItem(item: item),
         );
       },
     );
@@ -130,12 +127,6 @@ class _CertificationsPageState extends State<CertificationsPage> {
 
   @override
   Widget build(BuildContext context) {
-    // return new Container(
-    //   child: Container(
-    //     height: 220,
-    //     child: CertificateList(certificates: certificates),
-    //   ),
-    // );
     return new Container(
       child: Column(
         children: <Widget>[
