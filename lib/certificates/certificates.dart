@@ -12,12 +12,7 @@ class CertificateItem extends StatefulWidget {
 class _CertificateItemState extends State<CertificateItem> {
   @override
   Widget build(BuildContext context) {
-    return new Container(
-      //margin: EdgeInsets.only(left: 15),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Container(
+    return Container(
             width: widget.item.width,
             height: widget.item.height,
             decoration: new BoxDecoration(
@@ -80,22 +75,12 @@ class _CertificateItemState extends State<CertificateItem> {
                       Container(
                           child: new Image.asset(widget.item.image,
                               fit: BoxFit.fitHeight))
-                      // AspectRatio(
-                      //   aspectRatio: 3,
-                      //   child: new Image.asset(
-                      //     widget.item.image,
-                      //     fit: BoxFit.fitHeight,
-                      //   ),
-                      // )
                     ],
                   ),
                 )
               ],
             ),
-          )
-        ],
-      ),
-    );
+          );
   }
 }
 

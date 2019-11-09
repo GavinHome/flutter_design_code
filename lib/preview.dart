@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class Preview extends StatelessWidget {
   Preview({Key key, this.child}) : super(key: key);
-  Widget child;
+  final Widget child;
   
   @override
   Widget build(BuildContext context) {
